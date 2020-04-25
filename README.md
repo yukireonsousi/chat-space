@@ -17,6 +17,7 @@
 |nickname|string|add_index: true, null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
+|password_confirmation|string|null:false|
 
 ### Association
 - has_many :groups_users
