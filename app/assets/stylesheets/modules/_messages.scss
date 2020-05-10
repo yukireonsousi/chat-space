@@ -54,12 +54,12 @@
         height: 45px;
         margin-bottom:40px;
         
-        p.group__name{
+        .group__name{
           margin-bottom: 5px;
           font-size: 15px;
           @include font
         }
-        p.group__message{
+        .group__message{
           font-size: 11px;
           @include font
         }
