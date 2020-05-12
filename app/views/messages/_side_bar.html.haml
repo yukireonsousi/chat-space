@@ -19,21 +19,10 @@
 
 
   .side-bar__groups-list
-    .group
-      .group__name
-        gourp1
-      .group__message
-        message
-    
-
-  -# .side-bar__groups-list
-  -#     .group
-  -#       %p.group__name
-  -#         gourp1
-  -#       %p.group__message
-  -#         message
-  -#     .group
-  -#       %p.group__name
-  -#         group2
-  -#       %p.group__message
-  -#         message
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            = group.show_last_message
