@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
    if ( message.image ) {
      var html =
-      `<div class="message-box">
+      `<div class="message-box" data-message-id=${message.id}>
          <div class="upper-message">
            <div class="message-box__name">
              ${message.user_name}
@@ -21,7 +21,7 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="message-box">
+      `<div class="message-box" data-message-id=${message.id}>
          <div class="upper-message">
            <div class="message-box__name">
              ${message.user_name}
@@ -64,7 +64,8 @@ $('#new_message').on('submit', function(e){
 })
 var reloadMessages = function() {
   //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-  var last_message_id = $('.message:last').data("message-id");
+  var last_message_id = $('.message-box:last').data("message-id");
+  console.log(last_message_id)
   $.ajax({
     //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
     url: "api/messages",
@@ -83,8 +84,8 @@ var reloadMessages = function() {
      insertHTML += buildHTML(message)
    });
    //メッセージが入ったHTMLに、入れ物ごと追加
-   $('.messages').append(insertHTML);
-   $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+   $('.chat-main__message-list').append(insertHTML);
+   $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
       }
   })
   .fail(function() {
