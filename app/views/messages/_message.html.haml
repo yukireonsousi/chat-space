@@ -2,8 +2,8 @@
   .upper-message
     .message-box__name
       = message.user.name
-    .message-box__time
-      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+      .message-box__time
+        = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
   .lower-message
   - if message.content.present?
     .message-text
